@@ -1,0 +1,120 @@
+﻿@model mvc_project.Models.userinsert
+@{
+    ViewBag.Title = "insertuser_pageload";
+}
+
+<h2>insertuser_pageload</h2>
+<div>
+    @using (Html.BeginForm("insertuser_click", "userreg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+        <div>
+            <label>age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.age)
+            @Html.ValidationMessageFor(m => m.age)
+        </div>
+        <div>
+            <label>address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.address)
+
+        </div>
+        <div>
+            <label>email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+
+
+        <div>
+            <label>state:</label>
+        </div>
+        <div>
+            @Html.DropDownList("selstates", (SelectList)ViewBag.selstates, "--select--", new { @class = "form-control" })
+            @*@Html.TextBoxFor(m => m.state)*@
+
+        </div>
+        <div>
+            <label>qualification:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.myfavouritequal)
+            {
+                <label>
+                    <input type="checkbox" value="@item.value" checked="@item.ischecked" name="selectedqual" id="@item.value" />@Html.Raw(item.text)
+                </label>
+            }
+            @*@Html.TextBoxFor(m => m.qual)*@
+
+        </div>
+        <div>
+            <label>skills:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.skills)
+
+        </div>
+        <div>
+            <label>experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.expe)
+
+        </div>
+        <div>
+            <label>photo:</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+
+        </div>
+        <div>
+            <label>status:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.status)
+
+        </div>
+        <div>
+            <label>username:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.una)
+            @Html.ValidationMessageFor(m => m.una)
+
+        </div>
+        <div>
+            <label>password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.pwd)
+
+        </div>
+        <div>
+            <label>confirm password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.cpwd)
+            @Html.ValidationMessageFor(m => m.cpwd)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.msg)
+        </div>
+
+    }
+</div>
+
+
+

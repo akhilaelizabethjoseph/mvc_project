@@ -1,0 +1,33 @@
+﻿@model mvc_project.Models.logincls
+@{
+    ViewBag.Title = "login_pageload";
+}
+
+<h2>login_pageload</h2>
+<div>
+    @using (Html.BeginForm("login_click", "userlogin", FormMethod.Get))
+    {
+        <div>
+            <label>username</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uname)
+            @Html.ValidationMessageFor(m => m.uname)
+        </div>
+        <div>
+            <label>password</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.password)
+            @Html.ValidationMessageFor(m => m.password)
+
+        </div>
+        <div>
+            <input type="submit" value="login" />
+            @Html.DisplayFor(m => m.msg)
+        </div>
+
+    }
+</div>
+
+
